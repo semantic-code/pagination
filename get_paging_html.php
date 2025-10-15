@@ -17,7 +17,7 @@ function get_paging_html (
     int $limit = 10,
     int $page_block = 5,
     string $base_url = '?page=',
-    bool $include_style = false
+    bool $include_style = true
 ) {
     $total_page = ceil($total_count / $limit);
     if ($total_page < 1 ) return '';
