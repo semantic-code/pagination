@@ -7,7 +7,7 @@
  * @param int $limit 한 페이지당 데이터 개수
  * @param int $page_block 한 번에 표시할 페이지 번호 개수
  * @param string $base_url 페이지 이동용 기본 URL (예: '?page=')
- * @param bool $style_type 0=스타일없음, 1=기본, 2=대체
+ * @param int $style_type 0=스타일없음, 1=기본, 2=대체
  *
  * @return string HTML 출력
  */
@@ -17,7 +17,7 @@ function get_paging_html (
     int $limit = 10,
     int $page_block = 5,
     string $base_url = '?page=',
-    bool $include_style = 1
+    int $include_style = 1
 ) {
     $total_page = ceil($total_count / $limit);
     if ($total_page < 1 ) return '';
