@@ -7,7 +7,7 @@
  * @param int $limit 한 페이지당 데이터 개수
  * @param int $page_block 한 번에 표시할 페이지 번호 개수
  * @param string $base_url 페이지 이동용 기본 URL (예: '?page=')
- * @param bool $include_style 기본 스타일 사용
+ * @param bool $style_type 0=스타일없음, 1=기본, 2=대체
  *
  * @return string HTML 출력
  */
@@ -17,7 +17,7 @@ function get_paging_html (
     int $limit = 10,
     int $page_block = 5,
     string $base_url = '?page=',
-    bool $include_style = true
+    bool $include_style = 1
 ) {
     $total_page = ceil($total_count / $limit);
     if ($total_page < 1 ) return '';
@@ -34,11 +34,17 @@ function get_paging_html (
 
     ob_start();?>
 
-    <?php if ($include_style) : ?>
+    <?php if ($include_style === 1) : ?>
     <style>
         .pager a,.pager span {display:inline-block;padding:4px 8px;margin:0 2px;border:1px solid #ddd;border-radius:6px;color:#333;text-decoration:none;font-size:12px;}
         .pager .active {background:#333;color:#fff;border-color:#333;}
         .pager .disabled {color:#ccc;border-color:#eee;pointer-events:none;}
+    </style>
+    <?php elseif ($include_style === 2) : ?>
+    <style>
+        .pager a,.pager span {display:inline-block;padding:5px 10px;margin:0 3px;border-radius:20px;background:#f0f0f0;color:#007bff;text-decoration:none;font-size:13px;}
+        .pager .active {background:#007bff;color:#fff;}
+        .pager .disabled {opacity:0.5;pointer-events:none;}
     </style>
     <?php endif; ?>
 
