@@ -42,8 +42,9 @@ function get_paging_html (
     </style>
     <?php elseif ($include_style === 2) : ?>
     <style>
-        .pager a,.pager span {display:inline-block;padding:5px 10px;margin:0 3px;border-radius:20px;background:#f0f0f0;color:#007bff;text-decoration:none;font-size:13px;}
-        .pager .active {background:#007bff;color:#fff;}
+        .pager a,.pager span {display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin:0 3px;border-radius:50%;border:1px solid #ddd;color:#007bff;background:#fff;text-decoration:none;font-size:13px;transition:all .2s;}
+        .pager a:hover {background:#007bff;color:#fff;border-color:#007bff;}
+        .pager .active {background:#007bff;color:#fff;border-color:#007bff;}
         .pager .disabled {opacity:0.5;pointer-events:none;}
     </style>
     <?php endif; ?>
