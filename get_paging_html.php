@@ -2,7 +2,7 @@
 /**
  * HTML 페이지네이션 생성 함수 (독립 실행형)
  *
- * @param int $total_page 전체 페이지 수
+ * @param int $total_count 전체 레코드 수
  * @param int $page 현재 페이지 번호
  * @param int $limit 한 페이지당 데이터 개수
  * @param int $page_block 한 번에 표시할 페이지 번호 개수
@@ -12,13 +12,14 @@
  * @return string HTML 출력
  */
 function get_paging_html (
-    int $total_page,
+    int $total_count,
     int $page = 1,
     int $limit = 10,
     int $page_block = 5,
     string $base_url = '?page=',
     int $include_style = 1
-) {    
+) {
+    $total_page = ceil($total_count / $limit);
     if ($total_page < 1 ) return '';
 
     $page = max(1, (int) $page);
