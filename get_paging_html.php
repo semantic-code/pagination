@@ -34,13 +34,13 @@ function get_paging_html (
 
     ob_start();?>
 
-    <?php if ($include_style === 1) : ?>
+    <?php if (style_type === 1) : ?>
     <style>
         .pager a,.pager span {display:inline-block;padding:4px 8px;margin:0 2px;border:1px solid #ddd;border-radius:6px;color:#333;text-decoration:none;font-size:12px;}
         .pager .active {background:#333;color:#fff;border-color:#333;}
         .pager .disabled {color:#ccc;border-color:#eee;pointer-events:none;}
     </style>
-    <?php elseif ($include_style === 2) : ?>
+    <?php elseif (style_type === 2) : ?>
     <style>
         .pager a,.pager span {display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;margin:0 3px;border-radius:50%;border:1px solid #ddd;color:#007bff;background:#fff;text-decoration:none;font-size:13px;transition:all .2s;}
         .pager a:hover {background:#007bff;color:#fff;border-color:#007bff;}
