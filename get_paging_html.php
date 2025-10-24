@@ -20,7 +20,7 @@ function get_paging_html (
     int $style_type = 1
 ) {
     $total_page = ceil($total_count / $limit);
-    if ($total_page < 1 ) return '';
+    if ($total_page <= 1 ) return '';
 
     $page = max(1, (int) $page);
     $start_page = floor(($page - 1) / $page_block) * $page_block + 1;
