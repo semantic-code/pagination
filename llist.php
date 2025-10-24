@@ -8,20 +8,16 @@ $page_block = 5;
 $total_count = $DB->single("SELECT count(*) FROM {$target_table}");
 $paging = $Page->paging($total_count, $page, $limit, $page_block, dirname($_SERVER['PHP_SELF']) . '?table=free&page=');
 
-// 페이지 관련 계산
-$offset = ($page - 1) * $limit; // limit 시작 지점
+// 페이지 관련 계산, limit 시작 지점
+$offset = ($page - 1) * $limit;
 
 // 게시판 데이터 불러오기
 $sql = "SELECT * FROM {$target_table} WHERE (1) ORDER BY idx DESC LIMIT {$offset}, {$limit}";
 $get_data = $DB->query($sql);
 
-$virtual_number = $total_count - $offset;
-
-echo "<pre>";
-print_r($sql);
-echo "</pre>";
-
+$num = $total_count - $offset;
 ?>
+
 <div class="container py-5">
     <h2 class="fw-bold mb-4 text-center">📋 <?= $bo_table ?> 게시판 목록</h2>
 
@@ -42,7 +38,7 @@ echo "</pre>";
             </tr>
             <?php else : foreach ($get_data as $row) : ?>
             <tr>
-                <td><?= $virtual_number-- ?></td>
+                <td><?= $num-- ?></td>
                 <td>
                     <a href="/board/<?= $bo_table ?>/?w=u&mode=form&idx=<?=$row['idx'] ?>"><?= $row['subject'] ?></a>
                 </td>
